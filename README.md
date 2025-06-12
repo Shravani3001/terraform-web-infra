@@ -58,11 +58,13 @@ This project provides a complete AWS infrastructure using Terraform. It automate
    terraform apply
 
 6. **Verify Deployment**
+
    After a few minutes, open the Application Load Balancer DNS in your browser:
    http://<your-alb-dns-name>
    You should see the Nginx "Hello World" page.
 
 ✅ **Pre-requisites**
+
     - AWS account
 
     - IAM user with necessary permissions
@@ -72,6 +74,7 @@ This project provides a complete AWS infrastructure using Terraform. It automate
     - SSH key pair (if needed for Bastion access)
 
 📝 **Notes**
+
     - The infrastructure is deployed in us-east-1 (you can update the region if needed).
 
     - EC2 instances in private subnets are automatically launched via Auto Scaling Group with user data to install Nginx.

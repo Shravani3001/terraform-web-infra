@@ -64,17 +64,25 @@ This project provides a complete AWS infrastructure using Terraform. It automate
 
 ✅ **Pre-requisites**
     - AWS account
+
     - IAM user with necessary permissions
+
     - AWS CLI configured
+
     - SSH key pair (if needed for Bastion access)
 
 📝 **Notes**
     - The infrastructure is deployed in us-east-1 (you can update the region if needed).
+
     - EC2 instances in private subnets are automatically launched via Auto Scaling Group with user data to install Nginx.
+
     - No manual SSH is required when using ASG (unless debugging).
+
     - Ensure ALB and EC2 instance subnets are in enabled Availability Zones.
+
     - **To tear down everything**
-    - terraform destroy
+    ```bash
+    terraform destroy
 
 **Author**
 Shravani K

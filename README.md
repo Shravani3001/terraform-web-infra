@@ -83,14 +83,17 @@ terraform apply
 
 7. **Verify Deployment**
 After a few minutes, open the Application Load Balancer DNS in your browser:
-http://<your-alb-dns-name>
+```bash
+http://your-alb-dns-name
+```
+
 You should see the Nginx "Hello World" page.
 
 **Notes**
-The infrastructure is deployed in us-east-1 (you can update the region if needed).
-EC2 instances in private subnets are automatically launched via Auto Scaling Group with user data to install Nginx.
-No manual SSH is required when using ASG (unless debugging).
-Ensure ALB and EC2 instance subnets are in enabled Availability Zones.
+- The infrastructure is deployed in us-east-1 (you can update the region if needed).
+- EC2 instances in private subnets are automatically launched via Auto Scaling Group with user data to install Nginx.
+- No manual SSH is required when using ASG (unless debugging).
+- Ensure ALB and EC2 instance subnets are in enabled Availability Zones.
     
 8. **To tear down everything**
 ```bash
@@ -98,6 +101,9 @@ terraform destroy
 ```
 
 **Author**
+
 Shravani K
+
 LinkedIn: www.linkedin.com/in/shravani-k-25953828a
+
 DevOps Learner

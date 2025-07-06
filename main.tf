@@ -181,30 +181,6 @@ resource "aws_instance" "bastion" {
     }
 }
 
-resource "aws_instance" "private_ec2_1" {
-    ami = data.aws_ami.ubuntu.id
-    instance_type = var.instance_type
-    key_name = aws_key_pair.web-infra-key.key_name
-    subnet_id = aws_subnet.private-1.id
-    vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-
-    tags = {
-        Name = "PrivateEC2-1"
-    }
-}
-
-resource "aws_instance" "private_ec2_2" {
-    ami = data.aws_ami.ubuntu.id
-    instance_type = var.instance_type
-    key_name = aws_key_pair.web-infra-key.key_name
-    subnet_id = aws_subnet.private-2.id
-    vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-
-    tags = {
-        Name = "PrivateEC2-2"
-    }
-}
-
 resource "aws_lb" "app_alb" {
     name = "app-alb"
     internal = false

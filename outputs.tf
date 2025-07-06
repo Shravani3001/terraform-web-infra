@@ -2,14 +2,6 @@ output "bastion_public_ip" {
     value = aws_instance.bastion.public_ip
 }
 
-output "private_ec2_1_private_ip" {
-    value = aws_instance.private_ec2_1.private_ip
-}
-
-output "private_ec2_2_private_ip" {
-    value = aws_instance.private_ec2_2.private_ip
-}
-
 output "public_subnet_1_id" {
     value = aws_subnet.public-1.id
 }

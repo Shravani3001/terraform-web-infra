@@ -40,8 +40,7 @@ This project provides a complete AWS infrastructure using Terraform. It automate
 
     - AWS CLI configured
 
-    - SSH key pair (if needed for Bastion access)
-
+    - Terraform 
 ---
 
 ## How It Works

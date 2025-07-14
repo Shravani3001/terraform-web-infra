@@ -4,7 +4,7 @@ This project provides a complete AWS infrastructure using Terraform. It automate
 
 ---
 
-## Architecture Overview
+## Project Overview
 
 - ✅ **VPC** with public and private subnets across multiple Availability Zones.
 - ✅ **Internet Gateway** for public subnet internet access.
@@ -44,44 +44,89 @@ This project provides a complete AWS infrastructure using Terraform. It automate
 
 ---
 
+## How It Works
+
+This project automates the deployment of a secure and scalable web application infrastructure on AWS using Terraform. Here’s a high-level breakdown of how it works:
+
+- Terraform provisions the entire AWS infrastructure — including networking components, compute resources, and load balancers.
+
+- A custom VPC is created with both public and private subnets across multiple availability zones for high availability.
+
+- An Application Load Balancer (ALB) is placed in public subnets to distribute traffic to EC2 instances running inside an Auto Scaling Group (ASG) located in private subnets.
+
+- The ASG launches EC2 instances in the private subnets with a user data script that installs Nginx and serves a sample HTML page.
+
+- The NAT Gateway enables private instances to access the internet for package downloads (like Nginx) without exposing them directly.
+
+- Security Groups ensure secure traffic flow between components (ALB → EC2, etc.).
+
+- You access the web app via the ALB DNS, which routes traffic only to healthy instances using target group health checks.
+
+## Features
+
+- End-to-End Automated Deployment using Terraform
+
+- Highly Available Infrastructure across multiple Availability Zones
+
+- Private Subnet for EC2 Instances — isolated from direct internet exposure
+
+- Application Load Balancer with health checks and target groups
+
+- Auto Scaling Group for automatic horizontal scaling
+
+- User Data Script to install and configure Nginx
+
+- Security Groups enforcing least-privilege access between resources
+
+- Easy Teardown with terraform destroy
+
+## Project Structure
+```bash
+terraform-web-infra/
+├── main.tf                
+├── variables.tf           
+├── outputs.tf             
+├── terraform.tfvars       
+├── .gitignore
+└── README.md              
+```
+
+## Architecture diagram 
+```bash
+<img width="783" height="734" alt="terraform-web-infra diagram" src="https://github.com/user-attachments/assets/3f1d6967-1dad-4052-a725-d6f992e4feb6" />
+```
+
 ## How to Deploy
 
 > Make sure you have AWS CLI configured and Terraform installed.
 
-1. **Clone the Repository**
+**1. Clone the Repository**
 ```bash
 git clone https://github.com/Shravani3001/terraform-web-infra.git
 cd terraform-web-infra
 ```
 
-2. **Generate SSH Key Pair**
-```bash
-ssh-keygen -t rsa -b 4096 -f web-infra-key
-```
-
-This generates web-infra-key and web-infra-key.pub
-
-3. **Initialize Terraform**
+**2. Initialize Terraform**
 ```bash
 terraform init
 ```
 
-4. **Validate the Configuration**
+**3. Validate the Configuration**
 ```bash
 terraform validate
 ```
 
-5. **Preview the Execution Plan**
+**4. Preview the Execution Plan**
 ```bash
 terraform plan
 ```
 
-6. **Apply the Infrastructure**
+**5. Apply the Infrastructure**
 ```bash
 terraform apply
 ```
 
-7. **Verify Deployment**
+**6. Verify Deployment**
 After a few minutes, open the Application Load Balancer DNS in your browser:
 ```bash
 http://your-alb-dns-name
@@ -89,21 +134,27 @@ http://your-alb-dns-name
 
 You should see the Nginx "Hello World" page.
 
+<img width="1813" height="493" alt="terraform-web-infra-output" src="https://github.com/user-attachments/assets/a520d94e-ec78-4667-a426-e34c400fb6c7" />
+
+
 **Notes**
 - The infrastructure is deployed in us-east-1 (you can update the region if needed).
 - EC2 instances in private subnets are automatically launched via Auto Scaling Group with user data to install Nginx.
 - No manual SSH is required when using ASG (unless debugging).
 - Ensure ALB and EC2 instance subnets are in enabled Availability Zones.
     
-8. **To tear down everything**
+**7. To tear down everything**
 ```bash
 terraform destroy
 ```
 
-**Author**
+## About Me
 
-Shravani K
+I'm **Shravani**, a self-taught and project-driven DevOps engineer passionate about building scalable infrastructure and automating complex workflows.
 
-LinkedIn: www.linkedin.com/in/shravani-k-25953828a
+I love solving real-world problems with tools like Terraform, Ansible, Docker, Jenkins, and AWS — and I’m always learning something new to sharpen my edge in DevOps.
 
-DevOps Learner
+**Connect with me:**
+
+- LinkedIn: www.linkedin.com/in/shravani3001
+- GitHub: https://github.com/Shravani3001

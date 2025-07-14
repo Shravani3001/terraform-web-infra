@@ -92,9 +92,9 @@ terraform-web-infra/
 ```
 
 ## Architecture diagram 
-```bash
-<img width="783" height="734" alt="terraform-web-infra diagram" src="https://github.com/user-attachments/assets/3f1d6967-1dad-4052-a725-d6f992e4feb6" />
-```
+
+<img width="783" height="734" alt="Architecture-diagram" src="https://github.com/user-attachments/assets/d0774026-14f2-49d0-b202-602e20cc32ca" />
+
 
 ## How to Deploy
 

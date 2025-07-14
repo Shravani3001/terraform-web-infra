@@ -186,7 +186,6 @@ resource "aws_lb_listener" "http_listener" {
 resource "aws_launch_template" "app_lt" {
     name_prefix = "app_launch_template"
     instance_type = var.instance_type
-    key_name = var.key_name
     image_id = data.aws_ami.ubuntu.id
     
     network_interfaces {
